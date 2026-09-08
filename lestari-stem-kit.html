@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lestari STEM Kit — Modul Pembelajaran STEM Praktikal | JMSK PTSB</title>
+<meta name="description" content="Lestari STEM Kit ialah siri modul pembelajaran STEM praktikal (kren hidraulik, kereta getah, trek guli, robot Pascal) dengan kalkulator interaktif, penilaian, dan kaitan SDG — dibangunkan oleh Unit Sains JMSK, Politeknik Tuanku Sultanah Bahiyah.">
+<meta name="keywords" content="Lestari STEM Kit, STEM, JMSK, PTSB, Politeknik Tuanku Sultanah Bahiyah, kerja dan kuasa, tenaga kinetik, tenaga keupayaan, Prinsip Pascal, SDG, pembelajaran praktikal">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="AQ-X6JySrVdCl8LoPnK6pl5iy158HCshQv1QGn4JYpg" />
+<link rel="canonical" href="https://itsmeeina.github.io/lestari-stem-kit/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://itsmeeina.github.io/lestari-stem-kit/">
+<meta property="og:title" content="Lestari STEM Kit — Modul Pembelajaran STEM Praktikal">
+<meta property="og:description" content="Empat modul STEM hands-on lengkap dengan kalkulator interaktif, penilaian dan kaitan SDG. Dibangunkan oleh Unit Sains JMSK, Politeknik Tuanku Sultanah Bahiyah.">
+<meta property="og:locale" content="ms_MY">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132038;
+    --navy-2:#1C3054;
+    --navy-line: rgba(255,255,255,0.13);
+    --paper:#F6F6F0;
+    --paper-line: rgba(19,32,56,0.07);
+    --ink:#152134;
+    --ink-soft:#57626F;
+    --card:#FFFFFF;
+    --line:#E1E0D3;
+
+    --coral:#FF6B4A;
+    --coral-deep:#DE4B2C;
+    --coral-soft:#FFE6DF;
+
+    --teal:#0FA99A;
+    --teal-deep:#0A7E73;
+    --teal-soft:#DEF4F1;
+
+    --amber:#F2A93B;
+    --amber-deep:#C3801C;
+    --amber-soft:#FCEDD2;
+
+    --violet:#8B7CF6;
+    --violet-deep:#5B3FD9;
+    --violet-soft:#EBE7FE;
+
+    --wrong:#D6473F;
+    --wrong-bg:#FBEAE9;
+    --right:#0FA99A;
+    --right-bg:#DEF4F1;
+
+    --radius:6px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif; margin:0; color:var(--ink); letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{scroll-margin-top:82px;}
+  ul{margin:0; padding:0;}
+  li{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  input, textarea{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--teal-deep); outline-offset:2px;}
+
+  /* ---------- NAV ---------- */
+  #topnav{position:sticky; top:0; z-index:200; background:var(--navy); border-bottom:1px solid var(--navy-line);}
+  #topnav::after{content:""; display:block; height:3px; background:linear-gradient(90deg, var(--coral), var(--teal), var(--amber), var(--violet));}
+  #topnav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px; gap:18px;}
+  .brand{display:flex; align-items:center; gap:10px; color:#F7F7F2; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; white-space:nowrap;}
+  .brand .mark{width:20px;height:20px; flex:none;}
+  .navmenu{display:flex; align-items:center; gap:24px; flex:1; justify-content:flex-end;}
+  #topnav nav{display:flex; align-items:center; gap:22px;}
+  #topnav nav a{
+    color:rgba(247,247,242,0.72); text-decoration:none; font-size:14px; font-weight:500;
+    padding:4px 1px; border-bottom:2px solid transparent; white-space:nowrap;
+  }
+  #topnav nav a:hover, #topnav nav a.active{color:#fff; border-bottom-color:var(--coral);}
+  .langtoggle{display:flex; border:1px solid rgba(255,255,255,0.25); border-radius:999px; padding:3px; gap:2px; flex:none;}
+  .langtoggle button{
+    background:none; border:none; color:rgba(247,247,242,0.65); font-size:12.5px; font-weight:700;
+    padding:6px 12px; border-radius:999px; font-family:'JetBrains Mono',monospace;
+  }
+  .langtoggle button.active{background:var(--coral); color:#211004;}
+  .tiktok-btn{
+    display:flex; align-items:center; gap:8px; background:var(--coral); color:#2A0E03; text-decoration:none;
+    padding:8px 15px; border-radius:999px; font-size:13px; font-weight:700; white-space:nowrap; border:none;
+  }
+  .tiktok-btn:hover{background:#FF7F60;}
+  #navtoggle{display:none; background:none; border:1px solid rgba(255,255,255,0.3); color:#fff; padding:7px 11px; border-radius:4px; font-size:16px;}
+
+  /* ---------- HERO ---------- */
+  #utama{background:linear-gradient(150deg,var(--navy) 0%, var(--navy-2) 100%); color:#F7F7F2; padding:78px 0 60px; position:relative; overflow:hidden;}
+  #utama .blob{position:absolute; border-radius:50%; filter:blur(60px); opacity:0.28; z-index:0;}
+  #utama .blob1{width:340px; height:340px; background:var(--coral); top:-120px; right:-60px;}
+  #utama .blob2{width:280px; height:280px; background:var(--teal); bottom:-140px; left:10%;}
+  #utama .blob3{width:260px; height:260px; background:var(--violet); top:40%; right:22%;}
+  #utama::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background-image:linear-gradient(var(--navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+    background-size:36px 36px;
+    -webkit-mask-image:linear-gradient(to bottom, black, transparent 90%);
+            mask-image:linear-gradient(to bottom, black, transparent 90%);
+  }
+  .hero-inner{position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center;}
+  .hero-tag{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--coral); margin-bottom:14px;}
+  .hero-inner h1{font-size:clamp(36px,5vw,56px); line-height:1.05; font-weight:700; color:#fff; max-width:11ch;}
+  .hero-inner p.lead{margin-top:16px; font-size:16.5px; color:rgba(247,247,242,0.82); max-width:48ch;}
+  .hero-stats{display:flex; gap:0; margin-top:30px; border-top:1px solid var(--navy-line);}
+  .hero-stats div{padding:16px 22px 0 0; margin-right:22px; border-right:1px solid var(--navy-line);}
+  .hero-stats div:last-child{border-right:none;}
+  .hero-stats strong{display:block; font-family:'Space Grotesk',sans-serif; font-size:24px; color:#fff;}
+  .hero-stats span{font-size:12px; color:rgba(247,247,242,0.6);}
+  .hero-cta{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;}
+  .btn-primary{background:var(--coral); color:#2A0E03; text-decoration:none; font-weight:700; font-size:14.5px; padding:12px 22px; border-radius:999px; border:none; display:inline-block;}
+  .btn-primary:hover{background:#FF7F60;}
+  .btn-ghost{background:transparent; color:#fff; text-decoration:none; font-weight:600; font-size:14.5px; padding:12px 22px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); display:inline-block;}
+  .btn-ghost:hover{border-color:#fff;}
+  .hero-diagram{position:relative; z-index:1;}
+  .hero-diagram svg{width:100%; height:auto;}
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-head{max-width:58ch; margin-bottom:36px;}
+  .sec-head .kicker{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--coral-deep); margin-bottom:8px;}
+  .sec-head h2{font-size:clamp(25px,3.2vw,33px);}
+  .sec-head p{margin-top:12px; color:var(--ink-soft); font-size:15.5px;}
+
+  /* ---------- TENTANG ---------- */
+  #tentang{padding:68px 0; border-bottom:1px solid var(--line); background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px), linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+      background-size:36px 36px;}
+  .tentang-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:46px; align-items:start;}
+  #tentang p.body{color:var(--ink-soft); font-size:15.5px; margin:0 0 14px;}
+  .credit-box{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px;}
+  .credit-box h4{font-size:14px; margin-bottom:12px;}
+  .credit-box li{font-size:14px; color:var(--ink-soft); padding:7px 0; border-top:1px solid var(--line);}
+  .credit-box li:first-of-type{border-top:none;}
+  .credit-box .label{display:block; font-size:11.5px; color:var(--coral-deep); font-family:'JetBrains Mono',monospace; margin-bottom:2px;}
+
+  /* ---------- MODULES ---------- */
+  #modul{padding:68px 0; border-bottom:1px solid var(--line);}
+  .mod-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  .mod-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    border-top:3px solid var(--accent, var(--coral));
+  }
+  .mod-card:hover{transform:translateY(-5px); box-shadow:0 14px 30px rgba(19,32,56,0.10); border-color:var(--line);}
+  .mod-top{padding:22px 22px 18px; border-bottom:1px dashed var(--line);}
+  .mod-icon{width:42px; height:42px; margin-bottom:14px;}
+  .mod-tagline{font-size:12px; color:var(--ink-soft); margin-bottom:2px;}
+  .mod-top h3{font-size:19px; margin-bottom:8px;}
+  .mod-spec{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-deep,var(--coral-deep)); background:var(--accent-soft,var(--coral-soft)); padding:3px 9px; border-radius:3px;}
+  .mod-body{padding:18px 22px 22px; flex:1; display:flex; flex-direction:column; gap:16px;}
+  .mod-body h5{font-size:12px; color:var(--ink-soft); font-weight:600; margin-bottom:8px;}
+  .mod-body .objectives li{font-size:13.8px; color:var(--ink); padding-left:16px; position:relative; margin-bottom:6px;}
+  .mod-body .objectives li::before{content:"•"; position:absolute; left:0; color:var(--accent-deep,var(--coral-deep)); font-weight:700;}
+  details.mat{border-top:1px solid var(--line); padding-top:12px;}
+  details.mat summary{cursor:pointer; font-size:13.5px; font-weight:600; color:var(--navy-2); list-style:none; display:flex; align-items:center; justify-content:space-between;}
+  details.mat summary::-webkit-details-marker{display:none;}
+  details.mat summary::after{content:"+"; font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--ink-soft);}
+  details.mat[open] summary::after{content:"–";}
+  details.mat .matlist{margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 14px;}
+  details.mat .matlist li{font-size:13px; color:var(--ink-soft);}
+  .formula-box{margin-top:auto; background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:12px 14px;}
+  .formula-box .flabel{font-size:11px; color:var(--ink-soft); margin-bottom:8px;}
+  .formula-box ol{margin:0; padding-left:20px;}
+  .formula-box li{
+    font-family:'JetBrains Mono',monospace; font-size:14.5px; color:var(--accent-deep,var(--coral-deep));
+    font-weight:700; list-style:decimal; padding:3px 0;
+  }
+  .mod-intro{font-size:13.8px; color:var(--ink-soft); line-height:1.55; margin:0;}
+  .sdg-intro{
+    background:var(--violet-soft); border:1px solid var(--violet); border-radius:4px;
+    padding:14px 18px; font-size:13px; color:var(--ink); line-height:1.6; margin-bottom:26px;
+  }
+  .sdg-intro strong{color:var(--violet-deep);}
+  .sdg-badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:2px;}
+  .sdg-badge{
+    width:30px; height:30px; border-radius:5px; color:#fff; font-family:'JetBrains Mono',monospace;
+    font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  details.sdg summary{cursor:pointer; font-size:13.5px; font-weight:600; color:var(--navy-2); list-style:none; display:flex; align-items:center; justify-content:space-between;}
+  details.sdg summary::-webkit-details-marker{display:none;}
+  details.sdg summary::after{content:"+"; font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--ink-soft);}
+  details.sdg[open] summary::after{content:"–";}
+  details.sdg .sdg-list{margin-top:10px; display:flex; flex-direction:column; gap:10px;}
+  details.sdg .sdg-item{display:flex; gap:10px; align-items:flex-start;}
+  details.sdg .sdg-item .sdg-badge{margin-top:1px;}
+  details.sdg .sdg-item div{font-size:12.5px; color:var(--ink-soft); line-height:1.5;}
+  details.sdg .sdg-item strong{display:block; color:var(--ink); font-size:12.8px; margin-bottom:1px;}
+
+  /* ---------- PROSES (timeline) ---------- */
+  #proses{padding:68px 0; border-bottom:1px solid var(--line); background:var(--card);}
+  .timeline{position:relative; margin-top:10px;}
+  .timeline::before{content:""; position:absolute; left:19px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .tstep{display:grid; grid-template-columns:40px 1fr; gap:0; padding-bottom:32px; position:relative;}
+  .tstep:last-child{padding-bottom:0;}
+  .tnum{width:40px; height:40px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:700; z-index:1;}
+  .tcontent{padding-left:22px; padding-top:6px;}
+  .tcontent h4{font-size:16.5px; margin-bottom:6px;}
+  .tcontent p{font-size:14px; color:var(--ink-soft); margin:0; max-width:62ch;}
+
+  /* ---------- GALERI ---------- */
+  #galeri{padding:68px 0; border-bottom:1px solid var(--line); background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px), linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+      background-size:36px 36px;}
+  .gal-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:16px;}
+  .gcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column;}
+  .gphoto{
+    background:linear-gradient(135deg,var(--navy-2),var(--navy)); position:relative; height:100%;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; overflow:hidden;
+  }
+  .gphoto img{width:100%; height:100%; object-fit:cover;}
+  .gphoto .placeholder{display:flex; flex-direction:column; align-items:center; gap:8px; color:rgba(247,247,242,0.72); padding:18px; text-align:center;}
+  .gphoto .placeholder svg{width:30px; height:30px; opacity:0.85;}
+  .gphoto .placeholder span{font-size:12px; font-weight:600; max-width:20ch;}
+  .gphoto input[type=file]{display:none;}
+  .gcard.addcard .gphoto{background:var(--paper); border:1.5px dashed var(--line);}
+  .gcard.addcard .placeholder{color:var(--ink-soft);}
+  .gcard.addcard .placeholder svg{opacity:0.5;}
+  @media (min-width:861px){
+    .gcard:nth-child(1){grid-column:span 2; grid-row:span 2;}
+    .gcard:nth-child(2){grid-row:span 2;}
+  }
+
+  /* ---------- KALKULATOR ---------- */
+  #kalkulator{padding:68px 0; border-bottom:1px solid var(--line);}
+  .tab-row{display:flex; gap:8px; margin-bottom:26px; flex-wrap:wrap;}
+  .tab-btn{background:var(--card); border:1px solid var(--line); border-radius:999px; padding:10px 18px; font-size:13.5px; font-weight:600; color:var(--ink-soft);}
+  .tab-btn.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .calc-box{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); display:grid; grid-template-columns:1fr 1fr;}
+  .calc-inputs{padding:28px; border-right:1px solid var(--line);}
+  .calc-inputs h4{font-size:16px; margin-bottom:4px;}
+  .calc-inputs .sub{font-size:13px; color:var(--ink-soft); margin-bottom:20px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .field label .unit{font-family:'JetBrains Mono',monospace; color:var(--coral-deep);}
+  .field input[type=number]{width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:3px; font-family:'JetBrains Mono',monospace; font-size:14.5px; background:var(--paper); color:var(--ink);}
+  .calc-outputs{padding:28px; display:flex; flex-direction:column; gap:14px;}
+  .out-row{background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:14px 16px; display:flex; align-items:baseline; justify-content:space-between;}
+  .out-row .oname{font-size:13px; color:var(--ink-soft);}
+  .out-row .oval{font-family:'JetBrains Mono',monospace; font-size:19px; font-weight:700; color:var(--teal-deep);}
+  .out-formula{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:4px;}
+  .mini-table{width:100%; border-collapse:collapse; margin-top:4px;}
+  .mini-table th{font-size:11.5px; color:var(--ink-soft); text-align:left; font-weight:600; padding:6px 8px; border-bottom:1px solid var(--line);}
+  .mini-table td{padding:6px 8px; border-bottom:1px solid var(--line); font-size:13.5px;}
+  .mini-table input{width:82px; padding:6px 8px; border:1px solid var(--line); border-radius:3px; font-family:'JetBrains Mono',monospace; font-size:13px; background:var(--paper);}
+  .mini-table td.res{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--teal-deep);}
+  .steps-toggle{
+    margin-top:16px; background:none; border:1px dashed var(--line); color:var(--teal-deep);
+    font-size:12.5px; font-weight:600; padding:9px 14px; border-radius:4px; width:100%; text-align:left;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .steps-toggle:hover{border-color:var(--teal-deep);}
+  .steps-toggle:disabled{color:var(--ink-soft); cursor:not-allowed; opacity:0.6;}
+  .steps-toggle:disabled:hover{border-color:var(--line);}
+  .steps-box{display:none; margin-top:10px; background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+  .steps-box.open{display:block;}
+  .steps-box .steps-empty{margin:0; font-size:12.5px; color:var(--ink-soft); font-style:italic;}
+  .steps-box ol{margin:0; padding-left:18px;}
+  .steps-box li{list-style:decimal; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink); padding:5px 0; line-height:1.5;}
+  .insight-box{
+    display:none; margin-top:16px; background:var(--teal-soft); border:1px solid var(--teal); border-radius:4px;
+    padding:14px 16px; font-size:13px; color:var(--ink); line-height:1.6;
+  }
+  .insight-box.show{display:block;}
+  .insight-box .ilabel{display:block; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal-deep); font-weight:700; margin-bottom:6px;}
+
+  /* ---------- PENILAIAN ---------- */
+  #penilaian{padding:68px 0 84px; background:var(--card); border-bottom:1px solid var(--line);}
+  .qcard{border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-bottom:14px; background:var(--paper);}
+  .qcard .qtext{font-size:15px; font-weight:600; margin-bottom:14px;}
+  .qopt{display:flex; align-items:flex-start; gap:10px; padding:9px 10px; border-radius:3px; font-size:14px; margin-bottom:4px; cursor:pointer; border:1px solid transparent;}
+  .qopt:hover{background:rgba(19,32,56,0.05);}
+  .qopt input{margin-top:3px;}
+  .qcard.answered .qopt.answer-right{background:var(--right-bg); border-color:var(--right); color:var(--right-deep,#0A7E73);}
+  .qcard.answered .qopt.answer-wrong{background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong);}
+  .qexplain{display:none; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); font-size:13.5px; color:var(--ink-soft);}
+  .qexplain .lbl{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal-deep); margin-bottom:4px; display:block;}
+  .qcard.answered .qexplain{display:block;}
+  .qcard.answered .qopt{pointer-events:none;}
+  .quiz-actions{display:flex; align-items:center; gap:16px; margin-top:26px; flex-wrap:wrap;}
+  .quiz-score{font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:var(--teal-deep);}
+  .quiz-msg{font-size:13.5px; color:var(--ink-soft);}
+  .btn-reset{background:transparent; border:1px solid var(--line); color:var(--ink-soft); padding:9px 16px; border-radius:999px; font-size:13px; font-weight:600;}
+  .btn-reset:hover{border-color:var(--ink-soft); color:var(--ink);}
+  .quiz-module-label{font-size:13px; color:var(--ink-soft); margin-bottom:18px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy); color:rgba(247,247,242,0.75); padding:44px 0 26px;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
+  footer .brand{margin-bottom:10px;}
+  footer .foot-note{font-size:13px; max-width:44ch; color:rgba(247,247,242,0.55);}
+  footer hr{border:none; border-top:1px solid var(--navy-line); margin:26px 0 16px;}
+  .foot-bottom{display:flex; justify-content:space-between; font-size:12px; color:rgba(247,247,242,0.45); flex-wrap:wrap; gap:8px;}
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-diagram{order:-1; max-width:270px; margin:0 auto;}
+    .tentang-grid{grid-template-columns:1fr;}
+    .mod-grid{grid-template-columns:1fr;}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+    .calc-box{grid-template-columns:1fr;}
+    .calc-inputs{border-right:none; border-bottom:1px solid var(--line);}
+    .navmenu{display:none;}
+    #navtoggle{display:block;}
+    #topnav.open .navmenu{
+      display:flex; position:absolute; top:64px; left:0; right:0; background:var(--navy);
+      flex-direction:column; align-items:stretch; padding:16px 28px 22px; gap:16px; border-bottom:1px solid var(--navy-line);
+    }
+    #topnav.open nav{flex-direction:column; align-items:flex-start; gap:14px;}
+  }
+  @media (max-width:520px){
+    .gal-grid{grid-template-columns:1fr;}
+    .hero-stats{flex-wrap:wrap; row-gap:14px;}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .mod-card{transition:none;} }
+</style>
+</head>
+<body>
+
+<header id="topnav">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" fill="#FF6B4A"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#2A0E03" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Lestari STEM Kit</span>
+    </div>
+    <button id="navtoggle" aria-label="menu">☰</button>
+    <div class="navmenu">
+      <nav id="navlinks"></nav>
+      <div class="langtoggle" role="group" aria-label="Language">
+        <button data-lang="ms" id="langMS">BM</button>
+        <button data-lang="en" id="langEN">EN</button>
+      </div>
+      <a class="tiktok-btn" id="tiktokNavBtn" href="https://www.tiktok.com/@lestari.stemkit" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.1-.96-1.72-2.33-1.72-3.82h-3.24v13.66c0 1.64-1.33 2.97-2.97 2.97a2.97 2.97 0 0 1 0-5.94c.28 0 .55.04.8.11V9.5a6.2 6.2 0 0 0-.8-.05 6.2 6.2 0 1 0 6.2 6.2V9.05a8.3 8.3 0 0 0 4.9 1.58V7.4a4.85 4.85 0 0 1-3.17-1.58z"/></svg>
+        <span>TikTok</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="utama">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-tag" id="heroTag"></div>
+      <h1 id="heroTitle"></h1>
+      <p class="lead" id="heroLead"></p>
+      <div class="hero-cta">
+        <button class="btn-primary" id="heroCta1" data-goto="modul"></button>
+        <button class="btn-ghost" id="heroCta2" data-goto="kalkulator"></button>
+      </div>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+    <div class="hero-diagram">
+      <svg viewBox="0 0 320 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#F7F7F2" stroke-width="1.4" opacity="0.9">
+          <line x1="40" y1="300" x2="40" y2="60"/><line x1="40" y1="60" x2="150" y2="60"/>
+          <line x1="40" y1="90" x2="80" y2="60"/><line x1="40" y1="120" x2="110" y2="60"/>
+          <line x1="150" y1="60" x2="150" y2="180"/><rect x="130" y="180" width="40" height="30" rx="2"/>
+          <line x1="20" y1="300" x2="60" y2="300"/>
+        </g>
+        <g stroke="#FF6B4A" stroke-width="1.4" opacity="0.95">
+          <rect x="190" y="230" width="90" height="26" rx="3"/><circle cx="210" cy="262" r="10"/><circle cx="262" cy="262" r="10"/>
+          <line x1="190" y1="230" x2="205" y2="205"/><line x1="205" y1="205" x2="260" y2="205"/><line x1="260" y1="205" x2="280" y2="230"/>
+        </g>
+        <g stroke="#0FA99A" stroke-width="1.2" opacity="0.8">
+          <path d="M60 150 L110 150 L110 175 L160 175 L160 200 L205 200" stroke-dasharray="3 3"/>
+          <circle cx="60" cy="146" r="4" fill="#0FA99A" stroke="none"/>
+        </g>
+        <circle cx="160" cy="60" r="2" fill="#F2A93B" stroke="none"/>
+        <circle cx="150" cy="180" r="2" fill="#F7F7F2" stroke="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="wrap tentang-grid">
+    <div class="sec-head" style="margin-bottom:0;">
+      <div class="kicker" id="aboutKicker"></div>
+      <h2 id="aboutTitle"></h2>
+      <div id="aboutBody"></div>
+    </div>
+    <div class="credit-box">
+      <h4 id="creditTitle"></h4>
+      <ul id="creditList"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="modul">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" id="modKicker"></div>
+      <h2 id="modTitle"></h2>
+      <p id="modDesc"></p>
+    </div>
+    <div class="sdg-intro" id="sdgIntro"></div>
+    <div class="mod-grid" id="modGrid"></div>
+  </div>
+</section>
+
+<section id="proses">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" id="procKicker"></div>
+      <h2 id="procTitle"></h2>
+      <p id="procDesc"></p>
+    </div>
+    <div class="timeline" id="timelineWrap"></div>
+  </div>
+</section>
+
+<section id="galeri">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" id="galKicker"></div>
+      <h2 id="galTitle"></h2>
+      <p id="galDesc"></p>
+    </div>
+    <div class="gal-grid" id="galGrid"></div>
+  </div>
+</section>
+
+<section id="kalkulator">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" id="calcKicker"></div>
+      <h2 id="calcTitle"></h2>
+      <p id="calcDesc"></p>
+    </div>
+    <div class="tab-row" id="calcTabs"></div>
+    <div id="calcPanels"></div>
+  </div>
+</section>
+
+<section id="penilaian">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" id="quizKicker"></div>
+      <h2 id="quizTitle"></h2>
+      <p id="quizDesc"></p>
+    </div>
+    <div class="tab-row" id="quizTabs"></div>
+    <div id="quizPanels"></div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><svg class="mark" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" fill="#FF6B4A"/><path d="M6 10.5l2.6 2.6L14 7.5" stroke="#2A0E03" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lestari STEM Kit</span></div>
+        <p class="foot-note" id="footNote"></p>
+      </div>
+      <a class="tiktok-btn" id="tiktokFootBtn" href="https://www.tiktok.com/@lestari.stemkit" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.1-.96-1.72-2.33-1.72-3.82h-3.24v13.66c0 1.64-1.33 2.97-2.97 2.97a2.97 2.97 0 0 1 0-5.94c.28 0 .55.04.8.11V9.5a6.2 6.2 0 0 0-.8-.05 6.2 6.2 0 1 0 6.2 6.2V9.05a8.3 8.3 0 0 0 4.9 1.58V7.4a4.85 4.85 0 0 1-3.17-1.58z"/></svg>
+        <span id="footTiktokLabel"></span>
+      </a>
+    </div>
+    <hr>
+    <div class="foot-bottom">
+      <span id="footCopy"></span>
+      <span>MyIPO LY2026P04036</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   PANDUAN KEMASKINI / UPDATE GUIDE
+   -------------------------------------------------------------------------
+   Semua teks laman ini datang daripada objek UI, MODULES, TIMELINE,
+   GALLERY dan QUIZ di bawah. Untuk kemas kini kandungan, edit terus
+   nilai "ms" (Bahasa Melayu) dan "en" (English) pada objek berkaitan.
+   Tiada perlu ubah HTML atau CSS untuk tukar teks.
+   ========================================================================= */
+
+const UI = {
+  ms:{
+    nav:[["tentang","Tentang"],["modul","Modul"],["proses","Proses"],["galeri","Galeri"],["kalkulator","Kalkulator"],["penilaian","Penilaian"]],
+    hero:{
+      tag:"Pembelajaran STEM praktikal",
+      title:"Lestari STEM Kit",
+      lead:"Satu siri modul pembelajaran STEM yang boleh disentuh dan dicuba — sesuai untuk pelajar, guru, dan orang awam yang ingin memahami konsep kerja, tenaga dan kuasa melalui aktiviti hands-on.",
+      cta1:"Terokai modul", cta2:"Cuba kalkulator",
+      stats:[["4","Modul interaktif"],["2","Bahasa"],["16","Soalan penilaian"]]
+    },
+    about:{
+      kicker:"Tentang", title:"Belajar sains melalui pengalaman sebenar",
+      body:[
+        "Lestari STEM Kit ialah siri modul pembelajaran praktikal yang menggabungkan reka bentuk, pembinaan model, dan pengiraan sains sebenar. Setiap modul direka supaya boleh digunakan oleh pelajar sekolah, institusi pengajian tinggi, guru, mahupun orang awam yang berminat dengan STEM.",
+        "Modul ini turut menerapkan prinsip kelestarian — peserta digalakkan menggunakan bahan kitar semula untuk sebahagian pembinaan, manakala komponen teknikal utama dibekalkan sedia ada dalam kit. Setiap modul turut dikaitkan secara jelas dengan Matlamat Pembangunan Lestari (SDG) yang relevan.",
+        "Kit ini pada asalnya dibangunkan oleh Jabatan Matematik, Sains & Komputer, Politeknik Tuanku Sultanah Bahiyah, dan kini didaftarkan di bawah MyIPO."
+      ],
+      creditTitle:"Maklumat & kredit",
+      credit:[["Penyedia modul","Unit Sains JMSK PTSB"],["Jabatan","Matematik, Sains & Komputer"],["Institusi","Politeknik Tuanku Sultanah Bahiyah"],["Pendaftaran MyIPO","LY2026P04036"]]
+    },
+    modules:{kicker:"Senarai modul", title:"Empat modul, satu misi kelestarian", desc:"Setiap modul datang dengan info ringkas, objektif, bahan, formula pengiraan dan kaitan Matlamat Pembangunan Lestari (SDG) — sesuai untuk pelbagai peringkat peserta.", matLabel:"Bahan disediakan", objLabel:"Objektif", sdgLabel:"Kaitan SDG",
+      sdgIntro:"<strong>Apakah SDG?</strong> SDG (Sustainable Development Goals / Matlamat Pembangunan Lestari) ialah 17 matlamat global yang ditetapkan Pertubuhan Bangsa-Bangsa Bersatu (PBB) untuk dicapai menjelang tahun 2030 — merangkumi isu seperti pendidikan berkualiti, tenaga bersih, bandar lestari dan penggunaan bertanggungjawab. Setiap modul dalam Lestari STEM Kit dikaitkan dengan SDG yang relevan untuk menunjukkan sumbangannya kepada pembangunan lestari — klik \"Kaitan SDG\" pada mana-mana kad untuk lihat penjelasan penuh."
+    },
+    proses:{kicker:"Proses", title:"Bagaimana modul ini dibangunkan", desc:"Aliran umum pembangunan setiap modul, daripada pengenalan konsep sehingga demonstrasi akhir."},
+    galeri:{
+      kicker:"Galeri", title:"Aktiviti yang telah berlangsung",
+      desc:"Ruang untuk letak gambar aktiviti. Klik mana-mana ruang gambar untuk muat naik gambar anda sendiri.",
+      uploadLabel:"Klik untuk muat naik gambar", addLabel:"Tambah gambar baharu"
+    },
+    calc:{kicker:"Aktiviti interaktif", title:"Kalkulator pengiraan modul", desc:"Masukkan data ukuran anda, kemudian klik \"Kira\" untuk lihat hasil, ulasan perkaitan data, dan penjelasan langkah demi langkah.", calcBtn:"Kira", stepsLabel:"Lihat penjelasan pengiraan", stepsHide:"Sembunyikan penjelasan pengiraan", stepsEmpty:"Klik \"Kira\" dahulu untuk lihat penjelasan di sini.", insightLabel:"Ulasan — apa perkaitannya"},
+    quiz:{kicker:"Penilaian", title:"Uji kefahaman anda mengikut modul", desc:"Setiap modul mempunyai set soalan berasingan. Pilih modul, jawab soalan, dan semak markah anda serta-merta.",
+      check:"Semak jawapan", reset:"Cuba semula", scorePrefix:"Skor anda:",
+      msgHigh:"Cemerlang! Kefahaman teori anda sangat kukuh.", msgMid:"Baik — semak semula penjelasan bagi soalan yang tersilap.", msgLow:"Cuba baca semula konsep modul ini sebelum cuba lagi."
+    },
+    footer:{note:"Dibangunkan oleh Jabatan Matematik, Sains & Komputer, Politeknik Tuanku Sultanah Bahiyah.", tiktok:"Ikuti di TikTok", copy:"© 2026 Lestari STEM Kit"}
+  },
+  en:{
+    nav:[["tentang","About"],["modul","Modules"],["proses","Process"],["galeri","Gallery"],["kalkulator","Calculator"],["penilaian","Assessment"]],
+    hero:{
+      tag:"Hands-on STEM learning",
+      title:"Lestari STEM Kit",
+      lead:"A hands-on STEM learning series built for students, educators, and members of the public who want to understand work, energy and power through real, hands-on activities.",
+      cta1:"Explore the modules", cta2:"Try the calculator",
+      stats:[["4","Interactive modules"],["2","Languages"],["16","Assessment questions"]]
+    },
+    about:{
+      kicker:"About", title:"Learn science through real, hands-on experience",
+      body:[
+        "Lestari STEM Kit is a series of hands-on learning modules that combine design, model-building, and real scientific calculation. Each module is built to work for school students, higher-education learners, educators, and members of the public interested in STEM.",
+        "The modules also carry a sustainability principle — participants are encouraged to use recycled materials for part of the build, while the core technical components are already supplied in the kit. Each module is also clearly linked to its relevant Sustainable Development Goals (SDGs).",
+        "The kit was originally developed by the Department of Mathematics, Science & Computer, Politeknik Tuanku Sultanah Bahiyah, and is now registered under MyIPO."
+      ],
+      creditTitle:"Credits & information",
+      credit:[["Module authors","Science Unit, JMSK, PTSB"],["Department","Mathematics, Science & Computer"],["Institution","Politeknik Tuanku Sultanah Bahiyah"],["MyIPO registration","LY2026P04036"]]
+    },
+    modules:{kicker:"Module list", title:"Four modules, one sustainability mission", desc:"Every module comes with a short overview, objectives, materials, calculation formulas, and links to relevant Sustainable Development Goals (SDGs) — suitable for participants of many levels.", matLabel:"Materials provided", objLabel:"Objectives", sdgLabel:"SDG links",
+      sdgIntro:"<strong>What are the SDGs?</strong> The SDGs (Sustainable Development Goals) are 17 global goals set by the United Nations (UN) to be achieved by 2030 — covering issues like quality education, clean energy, sustainable cities, and responsible consumption. Each module in Lestari STEM Kit is linked to relevant SDGs to show its contribution to sustainable development — click \"SDG links\" on any card to see the full explanation."
+    },
+    proses:{kicker:"Process", title:"How these modules were developed", desc:"The general development flow for each module, from concept introduction through to final demonstration."},
+    galeri:{
+      kicker:"Gallery", title:"Activities that have taken place",
+      desc:"A space to place activity photos. Click any photo tile to upload your own image.",
+      uploadLabel:"Click to upload a photo", addLabel:"Add a new photo"
+    },
+    calc:{kicker:"Interactive activity", title:"Module calculator", desc:"Enter your measurement data, then click \"Calculate\" to see the result, a commentary on how the data relates, and a step-by-step explanation.", calcBtn:"Calculate", stepsLabel:"View calculation explanation", stepsHide:"Hide calculation explanation", stepsEmpty:"Click \"Calculate\" first to see the explanation here.", insightLabel:"Commentary — what's the connection"},
+    quiz:{kicker:"Assessment", title:"Test your understanding, module by module", desc:"Each module has its own separate set of questions. Pick a module, answer the questions, and check your score instantly.",
+      check:"Check answers", reset:"Try again", scorePrefix:"Your score:",
+      msgHigh:"Excellent! Your theoretical understanding is very solid.", msgMid:"Good — review the explanations for any questions you missed.", msgLow:"Try revisiting this module's concepts before trying again."
+    },
+    footer:{note:"Developed by the Department of Mathematics, Science & Computer, Politeknik Tuanku Sultanah Bahiyah.", tiktok:"Follow on TikTok", copy:"© 2026 Lestari STEM Kit"}
+  }
+};
+
+const SDG_COLORS = {4:'#C5192D',6:'#26BDE2',7:'#FCC30B',9:'#FD6925',11:'#FD9D24',12:'#BF8B2E'};
+
+const MODULES = [
+  {
+    id:'crane', name:'Smart Poly Crane', accent:'var(--coral)', accentDeep:'var(--coral-deep)', accentSoft:'var(--coral-soft)',
+    icon:'<svg viewBox="0 0 48 48" fill="none" stroke="var(--coral-deep)" stroke-width="1.6"><path d="M8 42V10"/><path d="M8 10h22"/><path d="M8 16l8-6"/><path d="M8 22l14-6"/><path d="M30 10v18"/><rect x="24" y="28" width="12" height="9" rx="1"/><path d="M4 42h12"/></svg>',
+    tagline:{ms:'Modul kerja & kuasa', en:'Work & power module'},
+    intro:{ms:'Kren mini yang menggunakan sistem hidraulik picagari untuk mengangkat beban secara menegak — cara paling mudah untuk lihat sendiri bagaimana kerja dan kuasa berfungsi dalam jentera sebenar.', en:'A mini crane powered by a syringe hydraulic system that lifts loads vertically — the simplest way to see how work and power operate in real machinery.'},
+    spec:{ms:'Ketinggian angkat minimum 0.24 m', en:'Minimum lifting height 0.24 m'},
+    objectives:{
+      ms:["Reka & bina kren angkat hidraulik menggunakan picagari","Bina bakul tersuai daripada bahan kitar semula","Kira kerja (work) yang dilakukan oleh kren","Kira kuasa (power) yang dihasilkan kren"],
+      en:["Design & build a hydraulic lifting crane using syringes","Build a custom basket from recycled materials","Calculate the work done by the crane","Calculate the power produced by the crane"]
+    },
+    materials:{
+      ms:["Kadbod × 1","Picagari 20ml × 6","Tiub getah 1.5m","Batang aiskrim (lubang) × 6","Klip kertas × 3","Cocok sate × 15","Benang 1m","Bateri AA × 1","Pengikat kabel × 5","Gam 3 saat"],
+      en:["Cardboard × 1","20ml syringe × 6","1.5m rubber tube","Popsicle sticks (holed) × 6","Paper clip × 3","Satay sticks × 15","Thread 1m","AA battery × 1","Cable tie × 5","3-second glue"]
+    },
+    formulaLabel:{ms:"Formula pengiraan (g = 9.81 m/s²)", en:"Calculation formula (g = 9.81 m/s²)"},
+    formula:{ms:["F = mg","W = F × d","P = W / t"], en:["F = mg","W = F × d","P = W / t"]},
+    sdg:[
+      {code:9, title:{ms:'Industri, Inovasi & Infrastruktur', en:'Industry, Innovation & Infrastructure'}, desc:{ms:'Mengajar prinsip jentera industri sebenar — kren hidraulik yang menggandakan daya menggunakan sistem picagari & bendalir.', en:'Teaches real industrial machinery principles — a hydraulic crane that multiplies force using syringes and fluid.'}},
+      {code:12, title:{ms:'Penggunaan & Pengeluaran Bertanggungjawab', en:'Responsible Consumption & Production'}, desc:{ms:'Bakul beban dibina daripada bahan kitar semula; sistem hidraulik picagari beroperasi tanpa bateri atau litar elektronik.', en:'The load basket is built from recycled materials; the syringe hydraulic system runs without batteries or electronics.'}},
+      {code:4, title:{ms:'Pendidikan Berkualiti', en:'Quality Education'}, desc:{ms:'Menterjemah konsep kerja dan kuasa kepada aktiviti reka-bina yang boleh disentuh dan diuji sendiri oleh peserta.', en:'Translates work and power concepts into a hands-on build-and-test activity participants can try themselves.'}}
+    ],
+    /* KALKULATOR: type 'simple' = medan input + output terus. Nak tambah medan?
+       tambah objek baharu dalam "fields" dan gunakan v.<id> dalam compute(). */
+    calc:{
+      type:'simple',
+      sub:{ms:'g = 9.81 m/s² digunakan secara automatik', en:'g = 9.81 m/s² is applied automatically'},
+      fields:[
+        {id:'mass', label:{ms:'Jisim beban',en:'Load mass'}, unit:'kg', value:0.05, step:0.001},
+        {id:'height', label:{ms:'Ketinggian angkat',en:'Lifting height'}, unit:'m', value:0.24, step:0.01},
+        {id:'time', label:{ms:'Masa angkatan',en:'Lifting time'}, unit:'s', value:5, step:0.1}
+      ],
+      compute(v){ const F=v.mass*G, W=F*v.height, P=v.time>0?W/v.time:0; return {F,W,P}; },
+      outputs:[
+        {key:'F', label:{ms:'Daya, F = mg',en:'Force, F = mg'}, unit:'N', decimals:3},
+        {key:'W', label:{ms:'Kerja, W = F × d',en:'Work, W = F × d'}, unit:'J', decimals:3},
+        {key:'P', label:{ms:'Kuasa, P = W / t',en:'Power, P = W / t'}, unit:'W', decimals:3}
+      ],
+      note:{ms:'F dalam Newton, W dalam Joule, P dalam Watt.', en:'F in Newtons, W in Joules, P in Watts.'},
+      steps(v,r){ return {
+        ms:[
+          `Langkah 1 — Kira daya: F = m × g = ${v.mass} × 9.81 = ${r.F.toFixed(3)} N`,
+          `Langkah 2 — Kira kerja: W = F × d = ${r.F.toFixed(3)} × ${v.height} = ${r.W.toFixed(3)} J`,
+          `Langkah 3 — Kira kuasa: P = W ÷ t = ${r.W.toFixed(3)} ÷ ${v.time} = ${r.P.toFixed(3)} W`
+        ],
+        en:[
+          `Step 1 — Find the force: F = m × g = ${v.mass} × 9.81 = ${r.F.toFixed(3)} N`,
+          `Step 2 — Find the work: W = F × d = ${r.F.toFixed(3)} × ${v.height} = ${r.W.toFixed(3)} J`,
+          `Step 3 — Find the power: P = W ÷ t = ${r.W.toFixed(3)} ÷ ${v.time} = ${r.P.toFixed(3)} W`
+        ]
+      };},
+      insight(v,r){ return {
+        ms:`Perhatikan perkaitannya: daya (F) berkadar terus dengan jisim beban — beban ${v.mass} kg menghasilkan daya ${r.F.toFixed(3)} N. Kerja (W) pula bergantung kepada daya <em>dan</em> ketinggian bersama; walaupun daya besar, kerja hanya meningkat jika ketinggian angkat turut besar. Kuasa (P) menunjukkan kelajuan kren melakukan kerja itu — masa angkatan yang lebih singkat (kekal W sama) akan menghasilkan kuasa yang lebih tinggi.`,
+        en:`Notice the relationship: force (F) is directly proportional to load mass — a ${v.mass} kg load produces ${r.F.toFixed(3)} N of force. Work (W) depends on <em>both</em> force and height together; even with a large force, work only increases if the lifting height is also large. Power (P) shows how fast the crane does that work — a shorter lifting time (same W) produces higher power.`
+      };}
+    }
+  },
+  {
+    id:'car', name:'F1 Rubber Band Car', accent:'var(--teal)', accentDeep:'var(--teal-deep)', accentSoft:'var(--teal-soft)',
+    icon:'<svg viewBox="0 0 48 48" fill="none" stroke="var(--teal-deep)" stroke-width="1.6"><rect x="8" y="22" width="32" height="10" rx="2"/><circle cx="15" cy="34" r="4"/><circle cx="33" cy="34" r="4"/><path d="M8 22l6-9h18l6 9"/><path d="M14 22v-6"/></svg>',
+    tagline:{ms:'Modul tenaga kinetik', en:'Kinetic energy module'},
+    intro:{ms:'Kereta ringkas yang digerakkan semata-mata oleh tenaga kenyal getah yang diregang — tiada motor, tiada bateri — menunjukkan bagaimana tenaga keupayaan bertukar kepada tenaga kinetik.', en:'A simple car powered purely by the elastic energy of a stretched rubber band — no motor, no battery — showing how potential energy converts into kinetic energy.'},
+    spec:{ms:'Jarak minimum 2.5 m', en:'Minimum distance 2.5 m'},
+    objectives:{
+      ms:["Reka & bina kereta getah untuk capai jarak 2.5 m","Tentukan tenaga kinetik yang dihasilkan kereta","Terangkan penukaran tenaga berdasarkan keputusan","Tunjukkan demonstrasi projek dalam masa ditetapkan"],
+      en:["Design & build a rubber-band car to travel at least 2.5 m","Determine the kinetic energy produced by the car","Explain the energy transformation based on the results","Demonstrate the build within the given time"]
+    },
+    materials:{
+      ms:["Batang aiskrim kecil × 10","Batang aiskrim besar × 10","Skewer kayu × 1","Gam 3 saat × 2","Getah gelang × 5","Tayar getah × 4","Braket gandar 3D × 3","Gandar 2.5cm × 1","Gandar 5.0cm × 1"],
+      en:["Small popsicle sticks × 10","Large popsicle sticks × 10","Wooden skewer × 1","3-second glue × 2","Rubber bands × 5","Rubber tyres × 4","3D-printed axle bracket × 3","2.5cm axle × 1","5.0cm axle × 1"]
+    },
+    formulaLabel:{ms:"Formula pengiraan", en:"Calculation formula"},
+    formula:{ms:["v = d / t","Ek = ½mv²"], en:["v = d / t","Ek = ½mv²"]},
+    sdg:[
+      {code:7, title:{ms:'Tenaga Bersih & Mampu Milik', en:'Affordable & Clean Energy'}, desc:{ms:'Guna tenaga keupayaan kenyal getah yang ditukar kepada tenaga kinetik — pergerakan sifar-pelepasan tanpa bateri atau bahan api.', en:'Uses elastic potential energy converted into kinetic energy — zero-emission motion without batteries or fuel.'}},
+      {code:12, title:{ms:'Penggunaan & Pengeluaran Bertanggungjawab', en:'Responsible Consumption & Production'}, desc:{ms:'Dibina daripada bahan kitar semula (batang aiskrim, kadbod) tanpa komponen elektronik atau bateri sekali guna.', en:'Built from upcycled craft materials (popsicle sticks, cardboard) with no electronic components or disposable batteries.'}},
+      {code:9, title:{ms:'Industri, Inovasi & Infrastruktur', en:'Industry, Innovation & Infrastructure'}, desc:{ms:'Mengajar asas kejuruteraan automotif — geseran & kelebihan mekanikal — mencerminkan usaha pengangkutan hijau sebenar.', en:'Teaches basic automotive engineering — friction and mechanical advantage — mirroring real-world green transportation.'}},
+      {code:4, title:{ms:'Pendidikan Berkualiti', en:'Quality Education'}, desc:{ms:'Menterjemah fizik teori (Hukum Hooke, tork, keabadian tenaga) kepada aktiviti STEM hands-on yang mudah diakses.', en:"Translates theoretical physics (Hooke's Law, torque, energy conservation) into an accessible hands-on STEM activity."}}
+    ],
+    calc:{
+      type:'simple',
+      sub:{ms:'Sasaran jarak minimum: 2.5 m', en:'Target minimum distance: 2.5 m'},
+      fields:[
+        {id:'mass', label:{ms:'Jisim kereta',en:'Car mass'}, unit:'kg', value:0.03, step:0.001},
+        {id:'distance', label:{ms:'Jarak tempuh',en:'Distance travelled'}, unit:'m', value:2.5, step:0.01},
+        {id:'time', label:{ms:'Masa tempuh',en:'Time taken'}, unit:'s', value:1.2, step:0.01}
+      ],
+      compute(v){ const vel=v.time>0?v.distance/v.time:0, Ek=0.5*v.mass*vel*vel; return {vel,Ek}; },
+      outputs:[
+        {key:'vel', label:{ms:'Halaju, v = d / t',en:'Velocity, v = d / t'}, unit:'m/s', decimals:3},
+        {key:'Ek', label:{ms:'Tenaga kinetik, Ek = ½mv²',en:'Kinetic energy, Ek = ½mv²'}, unit:'J', decimals:4}
+      ],
+      note:{ms:'v dalam meter/saat, Ek dalam Joule.', en:'v in metres/second, Ek in Joules.'},
+      steps(v,r){ return {
+        ms:[
+          `Langkah 1 — Kira halaju: v = d ÷ t = ${v.distance} ÷ ${v.time} = ${r.vel.toFixed(3)} m/s`,
+          `Langkah 2 — Kira tenaga kinetik: Ek = ½ × m × v² = ½ × ${v.mass} × ${r.vel.toFixed(3)}² = ${r.Ek.toFixed(4)} J`
+        ],
+        en:[
+          `Step 1 — Find the velocity: v = d ÷ t = ${v.distance} ÷ ${v.time} = ${r.vel.toFixed(3)} m/s`,
+          `Step 2 — Find the kinetic energy: Ek = ½ × m × v² = ½ × ${v.mass} × ${r.vel.toFixed(3)}² = ${r.Ek.toFixed(4)} J`
+        ]
+      };},
+      insight(v,r){ return {
+        ms:`Perhatikan perkaitannya: halaju (v) ialah jarak dibahagi masa — ${v.distance} m dalam ${v.time} s memberi ${r.vel.toFixed(3)} m/s. Tenaga kinetik (Ek) pula amat sensitif kepada halaju kerana ia berkadar dengan <em>kuasa dua</em> halaju (v²) — sedikit peningkatan pada halaju menyebabkan lonjakan besar pada Ek, jauh lebih besar berbanding kesan menambah jisim.`,
+        en:`Notice the relationship: velocity (v) is distance divided by time — ${v.distance} m in ${v.time} s gives ${r.vel.toFixed(3)} m/s. Kinetic energy (Ek) is very sensitive to velocity because it scales with velocity <em>squared</em> (v²) — a small increase in speed causes a much bigger jump in Ek than the same increase in mass would.`
+      };}
+    }
+  },
+  {
+    id:'marble', name:'Wonder Wall Marble Run', accent:'var(--amber)', accentDeep:'var(--amber-deep)', accentSoft:'var(--amber-soft)',
+    icon:'<svg viewBox="0 0 48 48" fill="none" stroke="var(--amber-deep)" stroke-width="1.6"><rect x="6" y="6" width="36" height="36" rx="2"/><path d="M12 14h10v8h10v8h6" stroke-dasharray="2.6 2.6"/><circle cx="12" cy="12" r="2.2" fill="var(--amber-deep)" stroke="none"/></svg>',
+    tagline:{ms:'Modul tenaga keupayaan', en:'Potential energy module'},
+    intro:{ms:'Trek guli menegak yang dipasang di dinding, dibina sepenuhnya daripada sisa harian — menunjukkan secara visual bagaimana ketinggian mempengaruhi tenaga keupayaan graviti.', en:'A vertical wall-mounted marble track built entirely from everyday waste — a visual demonstration of how height affects gravitational potential energy.'},
+    spec:{ms:'Tempoh larian minimum 15 saat', en:'Minimum run time 15 seconds'},
+    objectives:{
+      ms:["Reka & bina trek guli yang berjalan sekurang-kurangnya 15 saat","Kira tenaga keupayaan guli pada tiga kedudukan berbeza","Terangkan kesan kedudukan guli terhadap tenaga keupayaan","Susun hasil kerja dalam demonstrasi menyeluruh"],
+      en:["Design & build a marble track that runs for at least 15 seconds","Calculate the marble's potential energy at three different positions","Explain how the marble's position affects its potential energy","Organise the results into a complete demonstration"]
+    },
+    materials:{
+      ms:["Kotak piza 42.5×42.5×8.2cm","Straw × 10","Batang aiskrim × 10","Klip kertas × 1 kotak","Pita pelekat","Gam DIY","Plastisin ⅓ pcs","Pencungkil gigi × 20","Tali hiasan 0.5m"],
+      en:["Pizza box 42.5×42.5×8.2cm","Straws × 10","Popsicle sticks × 10","Paper clips × 1 box","Masking tape","DIY glue","Plasticine ⅓ pc","Toothpicks × 20","Decorative rope 0.5m"]
+    },
+    formulaLabel:{ms:"Formula pengiraan (g = 9.81 m/s²)", en:"Calculation formula (g = 9.81 m/s²)"},
+    formula:{ms:["Ep = mgh  (pada h1, h2, h3)"], en:["Ep = mgh  (at h1, h2, h3)"]},
+    sdg:[
+      {code:12, title:{ms:'Penggunaan & Pengeluaran Bertanggungjawab', en:'Responsible Consumption & Production'}, desc:{ms:'Menukar sisa harian (kotak piza, tiub kadbod, batang aiskrim) kepada projek kejuruteraan berfungsi — ekonomi kitaran sebenar, sifar plastik baharu.', en:'Turns everyday waste (pizza box, cardboard tubes, craft sticks) into a functional engineering project — genuine circular economy, zero new plastic.'}},
+      {code:9, title:{ms:'Industri, Inovasi & Infrastruktur', en:'Industry, Innovation & Infrastructure'}, desc:{ms:'Mengajar prinsip kejuruteraan awam & senibina — struktur menegak di dinding memaksimumkan kecekapan ruang.', en:'Teaches civil engineering and architecture principles — vertical wall-mounted structures maximise space efficiency.'}},
+      {code:11, title:{ms:'Bandar & Komuniti Lestari', en:'Sustainable Cities & Communities'}, desc:{ms:'Mencerminkan reka bentuk bandar lestari yang memanfaatkan ruang menegak untuk mengurangkan jejak tanah.', en:'Mirrors sustainable city design that uses vertical space to reduce land footprint.'}},
+      {code:4, title:{ms:'Pendidikan Berkualiti', en:'Quality Education'}, desc:{ms:'Menterjemah prinsip fizik abstrak (graviti, momentum, pecutan) kepada pembelajaran cuba-jaya yang mudah diakses.', en:'Translates abstract physics (gravity, momentum, acceleration) into accessible trial-and-error learning.'}}
+    ],
+    /* type 'table' = satu medan jisim + beberapa baris ketinggian berulang.
+       Nak tambah baris (h4, h5...)? tambah objek baharu dalam "rows". */
+    calc:{
+      type:'table',
+      sub:{ms:'Bandingkan Ep pada tiga kedudukan berbeza', en:'Compare Ep at three different positions'},
+      massField:{id:'mass', label:{ms:'Jisim guli',en:'Marble mass'}, unit:'kg', value:0.01, step:0.001},
+      rows:[{id:'h1', value:0.05},{id:'h2', value:0.10},{id:'h3', value:0.15}],
+      colLabels:{
+        pos:{ms:'Kedudukan', en:'Position'},
+        height:{ms:'Ketinggian, h (m)', en:'Height, h (m)'},
+        result:{ms:'Ep = mgh (J)', en:'Ep = mgh (J)'}
+      },
+      compute(mass, h){ return mass*G*h; },
+      note:{ms:'Semakin tinggi kedudukan guli, semakin besar tenaga keupayaannya.', en:"The higher the marble's position, the greater its potential energy."},
+      steps(mass, rowVals, results){
+        const ms = rowVals.map((h,i)=> `Kedudukan ${['h1','h2','h3'][i]} — Ep = m × g × h = ${mass} × 9.81 × ${h} = ${results[i].toFixed(4)} J`);
+        const en = rowVals.map((h,i)=> `Position ${['h1','h2','h3'][i]} — Ep = m × g × h = ${mass} × 9.81 × ${h} = ${results[i].toFixed(4)} J`);
+        return {ms, en};
+      },
+      insight(mass, rowVals, results){ return {
+        ms:`Perhatikan perkaitannya: jisim guli (${mass} kg) kekal <em>sama</em> pada ketiga-tiga kedudukan — hanya ketinggian (h) yang berubah. Kedudukan tertinggi (h3 = ${rowVals[2]} m) menghasilkan Ep paling besar (${results[2].toFixed(4)} J), lebih daripada tiga kali ganda Ep pada kedudukan terendah (h1 = ${rowVals[0]} m, Ep = ${results[0].toFixed(4)} J) — bukti bahawa Ep berkadar <em>terus</em> dengan ketinggian.`,
+        en:`Notice the relationship: the marble's mass (${mass} kg) stays the <em>same</em> at all three positions — only the height (h) changes. The highest position (h3 = ${rowVals[2]} m) produces the largest Ep (${results[2].toFixed(4)} J), more than three times the Ep at the lowest position (h1 = ${rowVals[0]} m, Ep = ${results[0].toFixed(4)} J) — proof that Ep is <em>directly</em> proportional to height.`
+      };}
+    }
+  },
+  {
+    id:'robosumo', name:'Robo Sumo Pascal', accent:'var(--violet)', accentDeep:'var(--violet-deep)', accentSoft:'var(--violet-soft)',
+    icon:'<svg viewBox="0 0 48 48" fill="none" stroke="var(--violet-deep)" stroke-width="1.6"><rect x="10" y="16" width="28" height="18" rx="2"/><circle cx="17" cy="25" r="3"/><circle cx="31" cy="25" r="3"/><path d="M4 25h6M38 25h6"/><path d="M18 16V9h12v7"/></svg>',
+    tagline:{ms:'Modul kerja, tenaga & kuasa (hidraulik)', en:'Work, energy & power module (hydraulic)'},
+    intro:{ms:'Robot yang menolak beban menggunakan sistem hidraulik empat picagari berasaskan Prinsip Pascal — tiada motor elektrik, tiada bateri, cuma tekanan bendalir yang disalurkan sama rata.', en:"A robot that pushes a load using a four-syringe hydraulic system based on Pascal's Principle — no electric motor, no battery, just fluid pressure transmitted equally throughout."},
+    spec:{ms:'Saiz maksimum 22 × 22 × 22 cm', en:'Maximum size 22 × 22 × 22 cm'},
+    objectives:{
+      ms:["Reka & bina Robo Sumo Pascal yang mampu menolak beban menggunakan sistem hidraulik","Aplikasikan konsep Kerja, Tenaga dan Kuasa melalui operasi & prestasi robot","Nilai prestasi robot berdasarkan keupayaan menolak beban dan kecekapannya","Pertingkat kreativiti, penyelesaian masalah, kerja berpasukan dan komunikasi melalui PBL"],
+      en:["Design & build a Robo Sumo Pascal able to push an assigned load using a hydraulic system","Apply the concepts of Work, Energy and Power through the robot's operation and performance","Evaluate the robot's performance based on its load-pushing capability and efficiency","Enhance creativity, problem-solving, teamwork and communication through Project-Based Learning"]
+    },
+    materials:{
+      ms:["Cocok sate buluh × 1 pek","Picagari 10ml × 4 unit","Tiub silikon 1m","Gan gam panas","Batang gam panas × 1 pek","Playar pemotong sisi","Pembaris"],
+      en:["Bamboo skewers × 1 pack","10ml syringe × 4 units","Silicone tubing 1m","Hot glue gun","Hot glue sticks × 1 pack","Side cutter pliers","Ruler"]
+    },
+    formulaLabel:{ms:"Formula pengiraan (g = 9.81 m/s²)", en:"Calculation formula (g = 9.81 m/s²)"},
+    formula:{ms:["F = mg","W = F × s","P = W / t"], en:["F = mg","W = F × s","P = W / t"]},
+    sdg:[
+      {code:6, title:{ms:'Air Bersih & Sanitasi', en:'Clean Water & Sanitation'}, desc:{ms:'Menunjukkan kuasa hidraulik gelung tertutup menggunakan tekanan bendalir mudah — mekanisme tanpa pencemaran.', en:'Demonstrates closed-loop hydraulic power using simple fluid pressure — a non-polluting mechanism.'}},
+      {code:9, title:{ms:'Industri, Inovasi & Infrastruktur', en:'Industry, Innovation & Infrastructure'}, desc:{ms:"Mengajar Prinsip Pascal untuk automasi mekanikal tanpa grid kuasa elektrik atau elektronik berat.", en:"Teaches Pascal's Law for mechanical automation without an electrical power grid or heavy electronics."}},
+      {code:12, title:{ms:'Penggunaan & Pengeluaran Bertanggungjawab', en:'Responsible Consumption & Production'}, desc:{ms:'Dibina daripada kayu kitar semula, batang aiskrim dan picagari guna semula — kurangkan e-sisa berbanding robotik elektronik biasa.', en:'Built from upcycled wood, popsicle sticks and reusable syringes — less e-waste than standard electronic robotics.'}},
+      {code:4, title:{ms:'Pendidikan Berkualiti', en:'Quality Education'}, desc:{ms:'Pembelajaran STEM praktikal yang menterjemah mekanik bendalir & kelebihan mekanikal kepada projek kejuruteraan interaktif.', en:'Practical STEM learning that translates fluid mechanics and mechanical advantage into an interactive engineering project.'}}
+    ],
+    calc:{
+      type:'simple',
+      sub:{ms:'g = 9.81 m/s² digunakan secara automatik', en:'g = 9.81 m/s² is applied automatically'},
+      fields:[
+        {id:'mass', label:{ms:'Jisim Robo Sumo',en:'Mass of Robo Sumo'}, unit:'kg', value:0.1, step:0.001},
+        {id:'disp', label:{ms:'Anjakan, s',en:'Displacement, s'}, unit:'m', value:0.3, step:0.01},
+        {id:'time', label:{ms:'Masa',en:'Time'}, unit:'s', value:2, step:0.1}
+      ],
+      compute(v){ const F=v.mass*G, W=F*v.disp, P=v.time>0?W/v.time:0; return {F,W,P}; },
+      outputs:[
+        {key:'F', label:{ms:'Daya, F = mg',en:'Force, F = mg'}, unit:'N', decimals:3},
+        {key:'W', label:{ms:'Kerja, W = F × s',en:'Work, W = F × s'}, unit:'J', decimals:3},
+        {key:'P', label:{ms:'Kuasa, P = W / t',en:'Power, P = W / t'}, unit:'W', decimals:3}
+      ],
+      note:{ms:'F dalam Newton, W dalam Joule, P dalam Watt.', en:'F in Newtons, W in Joules, P in Watts.'},
+      steps(v,r){ return {
+        ms:[
+          `Langkah 1 — Kira daya: F = m × g = ${v.mass} × 9.81 = ${r.F.toFixed(3)} N`,
+          `Langkah 2 — Kira kerja: W = F × s = ${r.F.toFixed(3)} × ${v.disp} = ${r.W.toFixed(3)} J`,
+          `Langkah 3 — Kira kuasa: P = W ÷ t = ${r.W.toFixed(3)} ÷ ${v.time} = ${r.P.toFixed(3)} W`
+        ],
+        en:[
+          `Step 1 — Find the force: F = m × g = ${v.mass} × 9.81 = ${r.F.toFixed(3)} N`,
+          `Step 2 — Find the work: W = F × s = ${r.F.toFixed(3)} × ${v.disp} = ${r.W.toFixed(3)} J`,
+          `Step 3 — Find the power: P = W ÷ t = ${r.W.toFixed(3)} ÷ ${v.time} = ${r.P.toFixed(3)} W`
+        ]
+      };},
+      insight(v,r){ return {
+        ms:`Perhatikan perkaitannya: formula ini nampak serupa dengan Smart Poly Crane, tetapi bezanya penting — di sini "s" ialah anjakan <em>mendatar</em> (beban ditolak ke tepi), bukan ketinggian menegak. Robot ini tidak melawan graviti secara langsung seperti kren; ia melawan geseran antara beban dengan permukaan. Kerja (${r.W.toFixed(3)} J) tetap bergantung kepada daya × jarak — konsep yang sama, konteks yang berbeza.`,
+        en:`Notice the relationship: this formula looks similar to the Smart Poly Crane, but there's a key difference — here "s" is <em>horizontal</em> displacement (the load is pushed sideways), not vertical height. This robot isn't working directly against gravity like the crane; it's working against friction between the load and the surface. Work (${r.W.toFixed(3)} J) still depends on force × distance — same concept, different context.`
+      };}
+    }
+  }
+];
+
+const TIMELINE = [
+  {ms:{title:"Pengenalan konsep tenaga", desc:"Penerangan konsep asas (kerja, kuasa, tenaga kinetik, tenaga keupayaan) melalui sesi pembelajaran interaktif."}, en:{title:"Introducing energy concepts", desc:"Core concepts (work, power, kinetic energy, potential energy) are introduced through an interactive learning session."}},
+  {ms:{title:"Taklimat & perbincangan", desc:"Peserta menerima taklimat pelan projek dan berbincang dalam kumpulan untuk merangka reka bentuk."}, en:{title:"Briefing & discussion", desc:"Participants receive a project briefing and discuss as a group to plan their design."}},
+  {ms:{title:"Reka bentuk & pembinaan", desc:"Peserta mengaplikasikan konsep tenaga secara langsung — mereka bentuk dan membina model menggunakan kit dan bahan kitar semula."}, en:{title:"Design & build", desc:"Participants apply the energy concepts directly — designing and building a model using the kit and recycled materials."}},
+  {ms:{title:"Ujian & pengumpulan data", desc:"Model diuji, hasil ukuran direkod, dan pengiraan dibuat untuk mengesahkan spesifikasi tercapai."}, en:{title:"Testing & data collection", desc:"The model is tested, measurements are recorded, and calculations confirm whether the target specification is met."}},
+  {ms:{title:"Demonstrasi & perkongsian", desc:"Peserta membentangkan hasil kerja, data dan penjelasan konsep dalam sesi demonstrasi akhir."}, en:{title:"Demonstration & sharing", desc:"Participants present their results, data and concept explanation in a final demonstration session."}}
+];
+
+/* GALLERY: src=null bermaksud slot gambar kosong (klik untuk muat naik pratonton sahaja).
+   Gambar sebenar (kekal untuk semua pelawat) diletakkan dalam folder images/ pada repo
+   dan dirujuk terus di sini. Nak tambah/tukar gambar? upload ke folder images/ dalam
+   GitHub, kemudian tambah/edit baris {src:'images/nama-fail.jpg'} di bawah. */
+const GALLERY = [
+  {src:'images/AKTIVITI%20SMART%20POLY%20CRANE.jpg'},
+  {src:'images/AKTIVITI%202%20STEM%20BOOTCAMP%20.png'},
+  {src:'images/AKTIVITI%202%20SMART%20POLY%20CRANE.jpg'},
+  {src:'images/AKTIVITI%20F1%20RUBBER%20BAND%20CAR.png'},
+  {src:'images/AKTIVITI%201%20ROBO%20SUMO%20PASCAL.jpeg'},
+  {src:'images/AKTIVITI%202%20ROBO%20SUMO%20PASCAL.jpeg'},
+  {src:'images/AKTIVITI%203%20STEM%20BOOTCAMP.jpeg'}
+];
+
+const QUIZ = {
+  crane:[
+    {correct:0, ms:{q:"Formula kerja (work) yang betul ialah?", opts:["W = F × d","W = F / d","W = m × a","W = P × t"], explain:"Kerja (work) ialah hasil darab daya (Force) dengan jarak (distance) dalam arah daya itu dikenakan: W = F × d."}, en:{q:"Which is the correct formula for work?", opts:["W = F × d","W = F / d","W = m × a","W = P × t"], explain:"Work is the product of force and the distance moved in the direction of the force: W = F × d."}},
+    {correct:2, ms:{q:"Unit SI bagi kuasa (power) ialah?", opts:["Joule","Newton","Watt","Newton-meter"], explain:"Kuasa diukur dalam Watt (W), iaitu kadar kerja yang dilakukan setiap saat (1 W = 1 J/s)."}, en:{q:"What is the SI unit for power?", opts:["Joule","Newton","Watt","Newton-metre"], explain:"Power is measured in Watts (W), the rate of doing work each second (1 W = 1 J/s)."}},
+    {correct:1, ms:{q:"Jika jisim beban meningkat tetapi ketinggian angkat kekal sama, apakah kesan kepada kerja yang dilakukan oleh kren?", opts:["Berkurang","Meningkat","Tidak berubah","Menjadi negatif"], explain:"Kerja bergantung kepada daya (F = mg). Jisim yang lebih besar menghasilkan daya lebih besar, jadi W = F × d turut meningkat."}, en:{q:"If the load's mass increases but the lifting height stays the same, what happens to the work done by the crane?", opts:["Decreases","Increases","Stays the same","Becomes negative"], explain:"Work depends on force (F = mg). A larger mass produces a larger force, so W = F × d also increases."}},
+    {correct:1, ms:{q:"Antara berikut, yang manakah meningkatkan kuasa kren tanpa mengubah jumlah kerja yang dilakukan?", opts:["Meningkatkan masa angkatan","Mengurangkan masa angkatan","Mengurangkan ketinggian angkatan","Mengurangkan jisim beban"], explain:"P = W / t. Untuk kerja yang sama, masa yang lebih singkat menghasilkan kuasa yang lebih tinggi."}, en:{q:"Which of the following increases the crane's power without changing the total work done?", opts:["Increasing lifting time","Decreasing lifting time","Decreasing lifting height","Decreasing load mass"], explain:"P = W / t. For the same amount of work, a shorter time produces higher power."}}
+  ],
+  car:[
+    {correct:1, ms:{q:"Formula tenaga kinetik (Ek) yang betul ialah?", opts:["Ek = mgh","Ek = ½mv²","Ek = F × d","Ek = m × v"], explain:"Tenaga kinetik bergantung kepada jisim dan kuasa dua halaju: Ek = ½mv²."}, en:{q:"Which is the correct formula for kinetic energy?", opts:["Ek = mgh","Ek = ½mv²","Ek = F × d","Ek = m × v"], explain:"Kinetic energy depends on mass and the square of velocity: Ek = ½mv²."}},
+    {correct:2, ms:{q:"Sumber tenaga awal yang menggerakkan F1 Rubber Band Car ialah?", opts:["Tenaga kinetik","Tenaga keupayaan kimia bateri","Tenaga keupayaan kenyal (elastik) getah","Tenaga haba"], explain:"Getah yang diregang menyimpan tenaga keupayaan kenyal, yang ditukar kepada tenaga kinetik apabila dilepaskan."}, en:{q:"What is the initial energy source that powers the rubber band car?", opts:["Kinetic energy","Chemical potential energy from a battery","Elastic potential energy in the rubber band","Heat energy"], explain:"A stretched rubber band stores elastic potential energy, which converts to kinetic energy once released."}},
+    {correct:1, ms:{q:"Jika halaju kereta digandakan dua kali (2×) tetapi jisim kekal sama, tenaga kinetiknya akan...", opts:["Berganda dua (2×)","Berganda empat (4×)","Tidak berubah","Berganda lapan (8×)"], explain:"Ek berkadar terus dengan kuasa dua halaju (v²). Apabila v digandakan dua, Ek meningkat 2² = 4 kali ganda."}, en:{q:"If a car's velocity is doubled (2×) while its mass stays the same, its kinetic energy will...", opts:["Double (2×)","Quadruple (4×)","Stay the same","Increase eight-fold (8×)"], explain:"Ek is directly proportional to velocity squared (v²). Doubling v increases Ek by 2² = 4 times."}},
+    {correct:1, ms:{q:"Geseran antara tayar dan permukaan trek memberi kesan kepada pergerakan kereta dengan cara...", opts:["Menambah tenaga kinetik kereta","Mengurangkan tenaga kinetik melalui pemindahan kepada tenaga haba","Tidak memberi sebarang kesan","Menukar tenaga kinetik kepada tenaga keupayaan"], explain:"Geseran melakukan kerja negatif terhadap kereta, menukar sebahagian tenaga kinetik kepada tenaga haba dan bunyi."}, en:{q:"Friction between the wheels and the track surface affects the car's motion by...", opts:["Adding kinetic energy to the car","Reducing kinetic energy by transferring it into heat energy","Having no effect at all","Converting kinetic energy into potential energy"], explain:"Friction does negative work on the car, converting some kinetic energy into heat and sound."}}
+  ],
+  marble:[
+    {correct:1, ms:{q:"Formula tenaga keupayaan graviti (Ep) yang betul ialah?", opts:["Ep = ½mv²","Ep = mgh","Ep = F × d","Ep = m / h"], explain:"Tenaga keupayaan graviti bergantung kepada jisim (m), pecutan graviti (g), dan ketinggian (h): Ep = mgh."}, en:{q:"Which is the correct formula for gravitational potential energy?", opts:["Ep = ½mv²","Ep = mgh","Ep = F × d","Ep = m / h"], explain:"Gravitational potential energy depends on mass (m), gravitational acceleration (g), and height (h): Ep = mgh."}},
+    {correct:1, ms:{q:"Guli yang diletakkan pada kedudukan lebih tinggi di atas trek akan memiliki...", opts:["Tenaga keupayaan lebih rendah","Tenaga keupayaan lebih tinggi","Tenaga kinetik lebih tinggi sebelum bergerak","Tiada tenaga"], explain:"Ep berkadar terus dengan ketinggian (h). Semakin tinggi kedudukan guli, semakin besar tenaga keupayaannya."}, en:{q:"A marble placed at a higher position on the track will have...", opts:["Lower potential energy","Higher potential energy","Higher kinetic energy before moving","No energy at all"], explain:"Ep is directly proportional to height (h). The higher the marble's position, the greater its potential energy."}},
+    {correct:1, ms:{q:"Apabila guli bergerak turun trek, tenaga keupayaan graviti ditukar kepada...", opts:["Tenaga kimia","Tenaga kinetik","Tenaga nuklear","Tenaga elektrik"], explain:"Semasa guli menuruni trek, tenaga keupayaan graviti secara beransur-ansur ditukar kepada tenaga kinetik."}, en:{q:"As the marble moves down the track, its gravitational potential energy converts into...", opts:["Chemical energy","Kinetic energy","Nuclear energy","Electrical energy"], explain:"As the marble descends the track, gravitational potential energy is gradually converted into kinetic energy."}},
+    {correct:0, ms:{q:"Nilai pecutan graviti (g) yang digunakan dalam semua pengiraan kit ini ialah?", opts:["9.81 m/s²","10.5 m/s²","8.91 m/s²","9.18 m/s²"], explain:"Manual kit menetapkan g = 9.81 m/s² sebagai nilai piawai untuk semua pengiraan kerja, kuasa dan tenaga."}, en:{q:"What value of gravitational acceleration (g) is used in all calculations for this module?", opts:["9.81 m/s²","10.5 m/s²","8.91 m/s²","9.18 m/s²"], explain:"This module's manual sets g = 9.81 m/s² as the standard value for all work, power and energy calculations."}}
+  ],
+  robosumo:[
+    {correct:1, ms:{q:"Prinsip asas yang digunakan sistem hidraulik Robo Sumo Pascal ialah?", opts:["Hukum Newton Ketiga","Prinsip Pascal (tekanan bendalir disalurkan sama rata)","Hukum Ohm","Prinsip Archimedes"], explain:"Sistem picagari & tiub silikon berfungsi berdasarkan Prinsip Pascal — tekanan yang dikenakan pada bendalir tertutup disalurkan sama rata, membolehkan daya pada satu picagari menggerakkan picagari lain."}, en:{q:"What basic principle does the Robo Sumo Pascal's hydraulic system rely on?", opts:["Newton's Third Law","Pascal's Principle (fluid pressure is transmitted equally)","Ohm's Law","Archimedes' Principle"], explain:"The syringe and silicone tube system works based on Pascal's Principle — pressure applied to an enclosed fluid is transmitted equally, letting force at one syringe move another syringe."}},
+    {correct:0, ms:{q:"Formula kerja (work) yang digunakan untuk menilai prestasi Robo Sumo Pascal ialah?", opts:["W = Fs","W = F / s","W = ms","W = Pt²"], explain:"W = F × s, iaitu daya dikenakan didarab dengan anjakan (jarak beban ditolak)."}, en:{q:"Which work formula is used to evaluate the Robo Sumo Pascal's performance?", opts:["W = Fs","W = F / s","W = ms","W = Pt²"], explain:"W = F × s — the force applied multiplied by the displacement (the distance the load is pushed)."}},
+    {correct:1, ms:{q:"Jika beban yang sama ditolak sejauh jarak yang sama tetapi mengambil masa lebih singkat, apakah kesannya kepada kuasa (power) robot?", opts:["Berkurang","Meningkat","Tidak berubah","Menjadi sifar"], explain:"P = W / t; masa lebih singkat untuk kerja yang sama bermakna kuasa yang dihasilkan lebih tinggi."}, en:{q:"If the same load is pushed the same distance but in less time, what happens to the robot's power?", opts:["Decreases","Increases","Stays the same","Becomes zero"], explain:"P = W / t; less time for the same work means the power produced is higher."}},
+    {correct:1, ms:{q:"Kelebihan utama menggunakan sistem hidraulik (picagari & bendalir) berbanding motor elektrik dalam projek ini ialah?", opts:["Lebih laju daripada motor elektrik","Tidak memerlukan bateri atau litar elektronik","Boleh menyimpan lebih banyak tenaga","Bergerak automatik dengan sendirinya"], explain:"Sistem hidraulik berasaskan picagari membolehkan pergerakan mekanikal tanpa bateri atau komponen elektronik, mengurangkan e-sisa."}, en:{q:"What is the main advantage of using a hydraulic system (syringes & fluid) over an electric motor in this project?", opts:["It is faster than an electric motor","It needs no battery or electronic circuit","It can store more energy","It moves automatically by itself"], explain:"The syringe-based hydraulic system allows mechanical movement without a battery or electronic components, reducing e-waste."}}
+  ]
+};
+
+/* ===================== STATE ===================== */
+let lang = 'ms';
+const G = 9.81;
+let galleryState = JSON.parse(JSON.stringify(GALLERY));
+
+/* ===================== RENDER ===================== */
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls) e.className=cls; if(html!==undefined) e.innerHTML=html; return e; }
+
+function goToSection(id){
+  const target = document.getElementById(id);
+  if(!target) return;
+  const navH = document.getElementById('topnav').offsetHeight;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+  window.scrollTo({top, behavior:'smooth'});
+  document.getElementById('topnav').classList.remove('open');
+}
+
+function renderNav(){
+  const t = UI[lang];
+  const nav = document.getElementById('navlinks');
+  nav.innerHTML = '';
+  t.nav.forEach(([id,label])=>{
+    const a = document.createElement('a');
+    a.href = 'javascript:void(0)'; a.textContent = label; a.dataset.section = id;
+    a.addEventListener('click', (e)=>{ e.preventDefault(); goToSection(id); });
+    nav.appendChild(a);
+  });
+  document.getElementById('langMS').classList.toggle('active', lang==='ms');
+  document.getElementById('langEN').classList.toggle('active', lang==='en');
+  document.documentElement.lang = lang;
+}
+
+function renderHero(){
+  const h = UI[lang].hero;
+  document.getElementById('heroTag').textContent = h.tag;
+  document.getElementById('heroTitle').textContent = h.title;
+  document.getElementById('heroLead').textContent = h.lead;
+  document.getElementById('heroCta1').textContent = h.cta1;
+  document.getElementById('heroCta2').textContent = h.cta2;
+  const statsWrap = document.getElementById('heroStats');
+  statsWrap.innerHTML = '';
+  h.stats.forEach(([val,label])=>{
+    const d = el('div','', '<strong data-target="'+val+'">0</strong><span></span>');
+    d.querySelector('span').textContent = label;
+    statsWrap.appendChild(d);
+  });
+  animateStats();
+}
+
+function animateStats(){
+  document.querySelectorAll('#heroStats strong').forEach(strong=>{
+    const raw = strong.dataset.target;
+    const target = parseInt(raw.replace(/\D/g,'')) || 0;
+    const suffix = raw.replace(/[0-9]/g,'');
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(target/24));
+    const timer = setInterval(()=>{
+      cur += step;
+      if(cur >= target){ cur = target; clearInterval(timer); }
+      strong.textContent = cur + suffix;
+    }, 30);
+  });
+}
+
+function renderAbout(){
+  const a = UI[lang].about;
+  document.getElementById('aboutKicker').textContent = a.kicker;
+  document.getElementById('aboutTitle').textContent = a.title;
+  const body = document.getElementById('aboutBody');
+  body.innerHTML = '';
+  a.body.forEach(p=>{ const pe = el('p','body'); pe.textContent = p; body.appendChild(pe); });
+  document.getElementById('creditTitle').textContent = a.creditTitle;
+  const list = document.getElementById('creditList');
+  list.innerHTML = '';
+  a.credit.forEach(([label,val])=>{
+    const li = el('li','', '<span class="label"></span>');
+    li.querySelector('.label').textContent = label;
+    li.appendChild(document.createTextNode(val));
+    list.appendChild(li);
+  });
+}
+
+function renderModules(){
+  const m = UI[lang].modules;
+  document.getElementById('modKicker').textContent = m.kicker;
+  document.getElementById('modTitle').textContent = m.title;
+  document.getElementById('modDesc').textContent = m.desc;
+  document.getElementById('sdgIntro').innerHTML = m.sdgIntro;
+  const grid = document.getElementById('modGrid');
+  grid.innerHTML = '';
+  MODULES.forEach(mod=>{
+    const card = el('article','mod-card');
+    card.style.setProperty('--accent', mod.accent);
+    card.style.setProperty('--accent-deep', mod.accentDeep);
+    card.style.setProperty('--accent-soft', mod.accentSoft);
+    const sdgBadges = mod.sdg.map(s=>`<div class="sdg-badge" style="background:${SDG_COLORS[s.code]}">${s.code}</div>`).join('');
+    const sdgItems = mod.sdg.map(s=>`
+      <div class="sdg-item">
+        <div class="sdg-badge" style="background:${SDG_COLORS[s.code]}">${s.code}</div>
+        <div><strong>${s.title[lang]}</strong>${s.desc[lang]}</div>
+      </div>`).join('');
+    card.innerHTML = `
+      <div class="mod-top">
+        <div class="mod-icon">${mod.icon}</div>
+        <div class="mod-tagline">${mod.tagline[lang]}</div>
+        <h3>${mod.name}</h3>
+        <span class="mod-spec">${mod.spec[lang]}</span>
+      </div>
+      <div class="mod-body">
+        <p class="mod-intro">${mod.intro[lang]}</p>
+        <div>
+          <h5>${m.objLabel}</h5>
+          <ul class="objectives">${mod.objectives[lang].map(o=>'<li>'+o+'</li>').join('')}</ul>
+        </div>
+        <details class="mat">
+          <summary>${m.matLabel} (${mod.materials[lang].length})</summary>
+          <ul class="matlist">${mod.materials[lang].map(x=>'<li>'+x+'</li>').join('')}</ul>
+        </details>
+        <details class="sdg">
+          <summary>${m.sdgLabel}<span class="sdg-badges">${sdgBadges}</span></summary>
+          <div class="sdg-list">${sdgItems}</div>
+        </details>
+        <div class="formula-box">
+          <div class="flabel">${mod.formulaLabel[lang]}</div>
+          <ol>${mod.formula[lang].map(f=>'<li>'+f+'</li>').join('')}</ol>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderTimeline(){
+  const p = UI[lang].proses;
+  document.getElementById('procKicker').textContent = p.kicker;
+  document.getElementById('procTitle').textContent = p.title;
+  document.getElementById('procDesc').textContent = p.desc;
+  const wrap = document.getElementById('timelineWrap');
+  wrap.innerHTML = '';
+  TIMELINE.forEach((step,i)=>{
+    const s = step[lang];
+    const d = el('div','tstep', `<div class="tnum">${i+1}</div><div class="tcontent"><h4>${s.title}</h4><p>${s.desc}</p></div>`);
+    wrap.appendChild(d);
+  });
+}
+
+const CAMERA_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.6-2.6h4.8L16 7"/><circle cx="12" cy="13.5" r="3.4"/></svg>';
+const PLUS_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>';
+
+function renderGallery(){
+  const g = UI[lang].galeri;
+  document.getElementById('galKicker').textContent = g.kicker;
+  document.getElementById('galTitle').textContent = g.title;
+  document.getElementById('galDesc').textContent = g.desc;
+  renderGalleryGrid();
+}
+
+function renderGalleryGrid(){
+  const g = UI[lang].galeri;
+  const grid = document.getElementById('galGrid');
+  grid.innerHTML = '';
+  galleryState.forEach((item, idx) => grid.appendChild(buildGalleryCard(item, idx)));
+
+  const addCard = el('div','gcard addcard');
+  const inputId = 'galAddInput';
+  addCard.innerHTML = `
+    <label class="gphoto" for="${inputId}">
+      <div class="placeholder">${PLUS_SVG}<span>${g.addLabel}</span></div>
+      <input type="file" id="${inputId}" accept="image/*">
+    </label>`;
+  addCard.querySelector('input').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      galleryState.push({src:ev.target.result});
+      renderGalleryGrid();
+    };
+    reader.readAsDataURL(file);
+  });
+  grid.appendChild(addCard);
+}
+
+function buildGalleryCard(item, realIndex){
+  const g = UI[lang].galeri;
+  const card = el('div','gcard');
+  const inputId = 'galInput'+realIndex;
+  const photoInner = item.src
+    ? `<img src="${item.src}" alt="">`
+    : `<div class="placeholder">${CAMERA_SVG}<span>${g.uploadLabel}</span></div>`;
+  card.innerHTML = `
+    <label class="gphoto" for="${inputId}">
+      ${photoInner}
+      <input type="file" id="${inputId}" accept="image/*">
+    </label>`;
+  card.querySelector('input').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      galleryState[realIndex].src = ev.target.result;
+      renderGalleryGrid();
+    };
+    reader.readAsDataURL(file);
+  });
+  return card;
+}
+
+/* ===== Kalkulator sepenuhnya data-driven — dibina terus daripada mod.calc
+   dalam MODULES. Tambah modul baharu dengan calc.type 'simple' atau 'table'
+   akan automatik muncul di sini tanpa perlu tulis HTML/JS baharu. ===== */
+function renderCalcLabels(){
+  const c = UI[lang].calc;
+  document.getElementById('calcKicker').textContent = c.kicker;
+  document.getElementById('calcTitle').textContent = c.title;
+  document.getElementById('calcDesc').textContent = c.desc;
+
+  const tabs = document.getElementById('calcTabs');
+  const panelsWrap = document.getElementById('calcPanels');
+  tabs.innerHTML = ''; panelsWrap.innerHTML = '';
+
+  MODULES.forEach((mod,i)=>{
+    const b = el('button','tab-btn'+(i===0?' active':''), mod.name);
+    b.dataset.tab = mod.id;
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('#calcTabs .tab-btn').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('#calcPanels .panel').forEach(p=>p.classList.remove('active'));
+      b.classList.add('active');
+      document.getElementById('calcpanel-'+mod.id).classList.add('active');
+    });
+    tabs.appendChild(b);
+
+    const panel = el('div','panel'+(i===0?' active':''));
+    panel.id = 'calcpanel-'+mod.id;
+    panel.appendChild(mod.calc.type === 'table' ? buildTablePanel(mod, c) : buildSimplePanel(mod, c));
+    panelsWrap.appendChild(panel);
+  });
+}
+
+function fmtOut(val, decimals, unit){ return val.toFixed(decimals) + ' ' + unit; }
+
+function buildSimplePanel(mod, c){
+  const cfg = mod.calc;
+  const box = el('div','calc-box');
+  const inputsHtml = cfg.fields.map(f=>`
+    <div class="field">
+      <label>${f.label[lang]} <span class="unit">(${f.unit})</span></label>
+      <input type="number" id="c-${mod.id}-${f.id}" value="${f.value}" step="${f.step}" min="0">
+    </div>`).join('');
+  const outputsHtml = cfg.outputs.map(o=>`
+    <div class="out-row"><span class="oname">${o.label[lang]}</span><span class="oval" id="o-${mod.id}-${o.key}">—</span></div>`).join('');
+  box.innerHTML = `
+    <div class="calc-inputs">
+      <h4>${mod.name} — ${mod.tagline[lang]}</h4>
+      <div class="sub">${cfg.sub[lang]}</div>
+      ${inputsHtml}
+      <button type="button" class="btn-primary calc-go" style="border:none; width:100%; margin-top:6px;">${UI[lang].calc.calcBtn}</button>
+    </div>
+    <div class="calc-outputs">
+      ${outputsHtml}
+      <div class="out-formula">${cfg.note[lang]}</div>
+      <div class="insight-box" id="insight-${mod.id}"><span class="ilabel">${UI[lang].calc.insightLabel}</span><span class="itext"></span></div>
+      <button type="button" class="steps-toggle" data-mod="${mod.id}" disabled>${UI[lang].calc.stepsLabel}<span>+</span></button>
+      <div class="steps-box" id="steps-${mod.id}"><p class="steps-empty">${UI[lang].calc.stepsEmpty}</p><ol></ol></div>
+    </div>`;
+
+  function recompute(){
+    const v = {};
+    cfg.fields.forEach(f=>{ v[f.id] = parseFloat(document.getElementById(`c-${mod.id}-${f.id}`).value) || 0; });
+    const r = cfg.compute(v);
+    cfg.outputs.forEach(o=>{ document.getElementById(`o-${mod.id}-${o.key}`).textContent = fmtOut(r[o.key], o.decimals, o.unit); });
+    const insightBox = box.querySelector(`#insight-${mod.id}`);
+    insightBox.querySelector('.itext').innerHTML = cfg.insight(v,r)[lang];
+    insightBox.classList.add('show');
+    const stepsBox = box.querySelector(`#steps-${mod.id}`);
+    stepsBox.querySelector('.steps-empty').style.display = 'none';
+    stepsBox.querySelector('ol').innerHTML = cfg.steps(v,r)[lang].map(s=>'<li>'+s+'</li>').join('');
+    stepsBox.classList.remove('open');
+    const toggleBtn = box.querySelector('.steps-toggle');
+    toggleBtn.disabled = false;
+    toggleBtn.firstChild.textContent = UI[lang].calc.stepsLabel;
+  }
+  box.querySelector('.calc-go').addEventListener('click', recompute);
+  const toggleBtn = box.querySelector('.steps-toggle');
+  toggleBtn.addEventListener('click', ()=>{
+    const stepsBox = box.querySelector(`#steps-${mod.id}`);
+    const open = stepsBox.classList.toggle('open');
+    toggleBtn.firstChild.textContent = open ? UI[lang].calc.stepsHide : UI[lang].calc.stepsLabel;
+  });
+  return box;
+}
+
+function buildTablePanel(mod, c){
+  const cfg = mod.calc;
+  const box = el('div','calc-box');
+  const rowsHtml = cfg.rows.map(r=>`
+    <tr><td>${r.id}</td><td><input type="number" id="c-${mod.id}-${r.id}" value="${r.value}" step="0.01" min="0"></td><td class="res" id="o-${mod.id}-${r.id}">—</td></tr>`).join('');
+  box.innerHTML = `
+    <div class="calc-inputs">
+      <h4>${mod.name} — ${mod.tagline[lang]}</h4>
+      <div class="sub">${cfg.sub[lang]}</div>
+      <div class="field">
+        <label>${cfg.massField.label[lang]} <span class="unit">(${cfg.massField.unit})</span></label>
+        <input type="number" id="c-${mod.id}-${cfg.massField.id}" value="${cfg.massField.value}" step="${cfg.massField.step}" min="0">
+      </div>
+      <button type="button" class="btn-primary calc-go" style="border:none; width:100%; margin-top:6px;">${UI[lang].calc.calcBtn}</button>
+    </div>
+    <div class="calc-outputs">
+      <table class="mini-table">
+        <thead><tr><th>${cfg.colLabels.pos[lang]}</th><th>${cfg.colLabels.height[lang]}</th><th>${cfg.colLabels.result[lang]}</th></tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+      <div class="out-formula">${cfg.note[lang]}</div>
+      <div class="insight-box" id="insight-${mod.id}"><span class="ilabel">${UI[lang].calc.insightLabel}</span><span class="itext"></span></div>
+      <button type="button" class="steps-toggle" data-mod="${mod.id}" disabled>${UI[lang].calc.stepsLabel}<span>+</span></button>
+      <div class="steps-box" id="steps-${mod.id}"><p class="steps-empty">${UI[lang].calc.stepsEmpty}</p><ol></ol></div>
+    </div>`;
+
+  function recompute(){
+    const mass = parseFloat(document.getElementById(`c-${mod.id}-${cfg.massField.id}`).value) || 0;
+    const rowVals = cfg.rows.map(r => parseFloat(document.getElementById(`c-${mod.id}-${r.id}`).value) || 0);
+    const results = rowVals.map(h => cfg.compute(mass, h));
+    cfg.rows.forEach((r,i)=>{ document.getElementById(`o-${mod.id}-${r.id}`).textContent = results[i].toFixed(4); });
+    const insightBox = box.querySelector(`#insight-${mod.id}`);
+    insightBox.querySelector('.itext').innerHTML = cfg.insight(mass, rowVals, results)[lang];
+    insightBox.classList.add('show');
+    const stepsBox = box.querySelector(`#steps-${mod.id}`);
+    stepsBox.querySelector('.steps-empty').style.display = 'none';
+    stepsBox.querySelector('ol').innerHTML = cfg.steps(mass, rowVals, results)[lang].map(s=>'<li>'+s+'</li>').join('');
+    stepsBox.classList.remove('open');
+    const toggleBtn = box.querySelector('.steps-toggle');
+    toggleBtn.disabled = false;
+    toggleBtn.firstChild.textContent = UI[lang].calc.stepsLabel;
+  }
+  box.querySelector('.calc-go').addEventListener('click', recompute);
+  const toggleBtn = box.querySelector('.steps-toggle');
+  toggleBtn.addEventListener('click', ()=>{
+    const stepsBox = box.querySelector(`#steps-${mod.id}`);
+    const open = stepsBox.classList.toggle('open');
+    toggleBtn.firstChild.textContent = open ? UI[lang].calc.stepsHide : UI[lang].calc.stepsLabel;
+  });
+  return box;
+}
+
+function renderQuiz(){
+  const q = UI[lang].quiz;
+  document.getElementById('quizKicker').textContent = q.kicker;
+  document.getElementById('quizTitle').textContent = q.title;
+  document.getElementById('quizDesc').textContent = q.desc;
+
+  const tabs = document.getElementById('quizTabs');
+  const panels = document.getElementById('quizPanels');
+  tabs.innerHTML = '';
+  panels.innerHTML = '';
+
+  MODULES.forEach((mod, mi)=>{
+    const tabBtn = el('button','tab-btn'+(mi===0?' active':''), mod.name);
+    tabBtn.dataset.tab = mod.id;
+    tabBtn.addEventListener('click', ()=>{
+      document.querySelectorAll('#quizTabs .tab-btn').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('#quizPanels .panel').forEach(p=>p.classList.remove('active'));
+      tabBtn.classList.add('active');
+      document.getElementById('qpanel-'+mod.id).classList.add('active');
+    });
+    tabs.appendChild(tabBtn);
+
+    const panel = el('div','panel'+(mi===0?' active':''));
+    panel.id = 'qpanel-'+mod.id;
+    const modLabel = el('div','quiz-module-label', mod.name + ' — ' + mod.tagline[lang]);
+    panel.appendChild(modLabel);
+
+    const cardsWrap = el('div');
+    QUIZ[mod.id].forEach((item, qi)=>{
+      const data = item[lang];
+      const card = el('div','qcard');
+      card.dataset.qid = mod.id+'-'+qi;
+      const qtext = el('div','qtext', (qi+1)+'. '+data.q);
+      card.appendChild(qtext);
+      data.opts.forEach((opt, oi)=>{
+        const label = el('label','qopt');
+        label.dataset.opt = oi;
+        label.innerHTML = '<input type="radio" name="'+mod.id+'-q'+qi+'" value="'+oi+'"> <span></span>';
+        label.querySelector('span').textContent = opt;
+        card.appendChild(label);
+      });
+      const explain = el('div','qexplain', '<span class="lbl"></span>');
+      explain.querySelector('.lbl').textContent = (lang==='ms' ? 'Penjelasan' : 'Explanation');
+      explain.appendChild(document.createTextNode(data.explain));
+      card.appendChild(explain);
+      cardsWrap.appendChild(card);
+    });
+    panel.appendChild(cardsWrap);
+
+    const actions = el('div','quiz-actions');
+    const checkBtn = el('button','btn-primary', q.check);
+    checkBtn.style.border = 'none';
+    const resetBtn = el('button','btn-reset', q.reset);
+    const scoreSpan = el('span','quiz-score');
+    const msgSpan = el('span','quiz-msg');
+    actions.appendChild(checkBtn); actions.appendChild(resetBtn); actions.appendChild(scoreSpan); actions.appendChild(msgSpan);
+    panel.appendChild(actions);
+
+    checkBtn.addEventListener('click', ()=>{
+      let score = 0;
+      const items = QUIZ[mod.id];
+      items.forEach((item, qi)=>{
+        const card = panel.querySelector('.qcard[data-qid="'+mod.id+'-'+qi+'"]');
+        const selected = card.querySelector('input[name="'+mod.id+'-q'+qi+'"]:checked');
+        card.classList.add('answered');
+        card.querySelectorAll('.qopt').forEach(o=>o.classList.remove('answer-right','answer-wrong'));
+        const rightOpt = card.querySelector('.qopt[data-opt="'+item.correct+'"]');
+        if(rightOpt) rightOpt.classList.add('answer-right');
+        if(selected){
+          const chosen = parseInt(selected.value);
+          if(chosen === item.correct){ score++; }
+          else{
+            const wrongOpt = card.querySelector('.qopt[data-opt="'+chosen+'"]');
+            if(wrongOpt) wrongOpt.classList.add('answer-wrong');
+          }
+        }
+      });
+      const total = items.length;
+      scoreSpan.textContent = q.scorePrefix + ' ' + score + ' / ' + total;
+      const pct = score/total;
+      msgSpan.textContent = pct >= 0.75 ? q.msgHigh : (pct >= 0.5 ? q.msgMid : q.msgLow);
+    });
+
+    resetBtn.addEventListener('click', ()=>{
+      panel.querySelectorAll('.qcard').forEach(card=>{
+        card.classList.remove('answered');
+        card.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+        card.querySelectorAll('.qopt').forEach(o=>o.classList.remove('answer-right','answer-wrong'));
+      });
+      scoreSpan.textContent = ''; msgSpan.textContent = '';
+    });
+
+    panels.appendChild(panel);
+  });
+}
+
+function renderFooter(){
+  const f = UI[lang].footer;
+  document.getElementById('footNote').textContent = f.note;
+  document.getElementById('footTiktokLabel').textContent = f.tiktok;
+  document.getElementById('footCopy').textContent = f.copy;
+}
+
+function renderAll(){
+  renderNav(); renderHero(); renderAbout(); renderModules(); renderTimeline();
+  renderGallery(); renderCalcLabels(); renderQuiz(); renderFooter();
+}
+
+/* ===================== INTERACTIONS ===================== */
+document.getElementById('langMS').addEventListener('click', ()=>{ lang='ms'; renderAll(); });
+document.getElementById('langEN').addEventListener('click', ()=>{ lang='en'; renderAll(); });
+
+document.getElementById('navtoggle').addEventListener('click', ()=>{
+  document.getElementById('topnav').classList.toggle('open');
+});
+
+document.getElementById('heroCta1').addEventListener('click', ()=> goToSection('modul'));
+document.getElementById('heroCta2').addEventListener('click', ()=> goToSection('kalkulator'));
+
+const TIKTOK_URL = "https://www.tiktok.com/@pshjmskptsb";
+document.getElementById('tiktokNavBtn').href = TIKTOK_URL;
+document.getElementById('tiktokFootBtn').href = TIKTOK_URL;
+
+// Scroll-spy nav highlight
+const sectionIds = ['tentang','modul','proses','galeri','kalkulator','penilaian'];
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      document.querySelectorAll('#navlinks a').forEach(a=>{
+        a.classList.toggle('active', a.dataset.section === entry.target.id);
+      });
+    }
+  });
+}, {rootMargin:'-40% 0px -55% 0px'});
+window.addEventListener('load', ()=>{
+  sectionIds.forEach(id=>{ const s = document.getElementById(id); if(s) observer.observe(s); });
+});
+
+renderAll();
+</script>
+</body>
+</html>
